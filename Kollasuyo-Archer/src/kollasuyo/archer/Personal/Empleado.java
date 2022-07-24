@@ -5,20 +5,32 @@
  */
 package kollasuyo.archer.Personal;
 
+import java.io.Serializable;
 import kollasuyo.archer.Inventario.dispositivo;
 
 /**
  *
  * @author 
  */
-public class Empleado extends Persona{
+public class Empleado extends Persona implements Serializable{
     
     private String diaDescanso;
     private int contDispVendidos;
     private double Pago;
-    private Bonos bonos;
+    private Bonos bonos = new Bonos();
 
-    public Empleado(String diaDescanso, int contDispVendidos, double Pago, Bonos bonos, String Nombre, int Ci) {
+    private Logueo log;
+
+    public Empleado(Logueo log, String Nombre, String Ci,Bonos bonos) {
+        super(Nombre, Ci);
+        this.log = log;
+        this.bonos = bonos;
+    }
+    
+    
+    
+    
+    public Empleado(String diaDescanso, int contDispVendidos, double Pago, Bonos bonos, String Nombre, String Ci) {
         super(Nombre, Ci);
         this.diaDescanso = diaDescanso;
         this.contDispVendidos = contDispVendidos;
@@ -51,6 +63,7 @@ public class Empleado extends Persona{
     }
 
     public Bonos getBonos() {
+            System.out.println("0");
         return bonos;
     }
 
@@ -59,9 +72,19 @@ public class Empleado extends Persona{
     }
     
     public double calcularPago(){
-        return Pago+ bonos.Calcular();
+        return Pago+ bonos.ObtenerBonos();
+    }
+
+    public Logueo getLog() {
+        return log;
+    }
+
+    public void setLog(Logueo log) {
+        this.log = log;
     }
     
     
+    
+    public void mostrar(){}
     
 }

@@ -5,15 +5,17 @@
  */
 package kollasuyo.archer.Personal;
 
+import java.io.Serializable;
+
 /**
  *
  * 
  */
-public class Cliente extends Persona{
+public class Cliente extends Persona implements Serializable{
     
     private String Nacionalidad;
 
-    public Cliente(String nacionalidad, String Nombre, int Ci) {
+    public Cliente(String nacionalidad, String Nombre, String Ci) {
         super(Nombre, Ci);
         this.Nacionalidad = nacionalidad;
     }

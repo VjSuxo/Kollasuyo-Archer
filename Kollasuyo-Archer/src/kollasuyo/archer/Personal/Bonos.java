@@ -5,32 +5,39 @@
  */
 package kollasuyo.archer.Personal;
 
+import java.io.Serializable;
 import kollasuyo.archer.Inventario.dispositivo;
+import EstructuraDatos.*;
 
 /**
  *
  * @author victo
  */
-class Bonos {
+public class Bonos implements Serializable{
     private dispositivo[] dispo;
-    private double Precio;
+    private double bonosAcumulados=0;
+    
 
-    public Bonos(dispositivo[] dispo, int Precio) {
-        this.dispo = dispo;
-        this.Precio = Precio;
+    public Bonos() {
+        System.out.println("Bonos acumulados :"+bonosAcumulados);
     }
     
-    public void AgregarBono(dispositivo[] dispo,int cant){
-        double bono = 0;
+    public void AgregarBono(int cant,ListaDispositivos lsDisp){
+        double precio = 0;
         for (int i = 0; i < cant; i++) {
-            bono += dispo[i].getPrecio()*0.5;
+            precio += lsDisp.Buscar(i).getPrecioBase()*0.5;
         }
+        bonosAcumulados+=precio;
         
-        Precio = bono;
     }
     
-    public double Calcular(){
-        return Precio;
+    public void setBonos(double bon){
+        this.bonosAcumulados = bon;
+    }
+    
+    public double ObtenerBonos(){
+        System.out.println("0");
+        return bonosAcumulados;
     }
     
 }

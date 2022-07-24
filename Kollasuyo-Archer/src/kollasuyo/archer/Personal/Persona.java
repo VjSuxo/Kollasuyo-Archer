@@ -5,16 +5,18 @@
  */
 package kollasuyo.archer.Personal;
 
+import java.io.Serializable;
+
 /**
  *
  * 
  */
-public class Persona {
+public class Persona implements Serializable{
     
     private String Nombre;
-    private int Ci;
+    private String Ci;
 
-    public Persona(String Nombre, int Ci) {
+    public Persona(String Nombre, String Ci) {
         this.Nombre = Nombre;
         this.Ci = Ci;
     }
@@ -27,11 +29,11 @@ public class Persona {
         this.Nombre = Nombre;
     }
 
-    public int getCi() {
+    public String getCi() {
         return Ci;
     }
 
-    public void setCi(int Ci) {
+    public void setCi(String Ci) {
         this.Ci = Ci;
     }
     
