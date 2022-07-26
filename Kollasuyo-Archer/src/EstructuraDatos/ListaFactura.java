@@ -18,7 +18,7 @@ public class ListaFactura implements Serializable {
 	
         // Metodos Basicos de listas
         
-        ListaFactura() {
+        public ListaFactura() {
 		p = null;
 	}
 	public NodoFactura getP() {

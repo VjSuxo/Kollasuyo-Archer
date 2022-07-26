@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 public class ListaMarcas implements Serializable {
      private NodoMarca p;
-	   ListaMarcas() {
+	   public ListaMarcas() {
 		p = null;
 	}
 	public NodoMarca getP() {

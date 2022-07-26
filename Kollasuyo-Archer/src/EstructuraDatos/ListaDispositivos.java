@@ -85,6 +85,25 @@ public class ListaDispositivos implements Serializable{
 		return b;
 	}
 	
+        public NodoDispositivo eliminar(String id) {
+		NodoDispositivo aux = getP();
+                while(aux!=null){
+                    if(aux.getSig()!=null){
+                        dispositivo dp = aux.getSig().getDispo();
+                        if(dp.getId().equals(id)){
+                         aux.setSig(aux.getSig().getSig());
+                        
+                        }
+                    }
+                    else{
+                        aux.setSig(null);
+                    }
+                    
+                    aux = aux.getSig();
+                }
+                return aux;
+	}
+        
         public dispositivo Buscar(int i){
             NodoDispositivo aux = getP();
             int pos = 0;
@@ -98,6 +117,25 @@ public class ListaDispositivos implements Serializable{
                         }
 		}
             return null;    
+        }
+        
+        public void Modificar(String id,dispositivo disp){
+            NodoDispositivo aux = getP();
+            int pos = 0;
+		while(aux != null) {
+                    dispositivo dis = aux.getDispo();
+                    System.out.println(dis.getId());
+                        if(dis.getId().equals(id)){
+                            System.out.println("modificando dispositivo");
+                            aux.setDispo(disp);
+                            break;
+                        }
+                        else{
+                            System.out.println("no se encontro dispositvo para la modificacion");
+                        }
+                    aux = aux.getSig();
+		}
+                
         }
 		
 	

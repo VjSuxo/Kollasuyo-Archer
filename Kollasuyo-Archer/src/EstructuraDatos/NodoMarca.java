@@ -42,7 +42,9 @@ public class NodoMarca {
         this.sig = sig;
     }
     
-    public void Mostrar(){}
+    public String Mostrar(){
+        return marca;
+    }
     
     
     

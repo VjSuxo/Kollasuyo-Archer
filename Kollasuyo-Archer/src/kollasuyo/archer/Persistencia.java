@@ -35,12 +35,16 @@ public class Persistencia implements Serializable{
     public Object  recuperar(String nombre) throws IOException, ClassNotFoundException {
         System.out.println("Obteniendo datos ....");
         ObjectInputStream r1 = new ObjectInputStream(new FileInputStream("datos\\"+nombre+".dat"));
+        System.out.println("-----");
         if(r1!=null){
             Object  a1 = (Object) r1.readObject();
+            System.out.println("****");
+            System.out.println(a1);
             r1.close();
             return (a1);
         }
         else{
+            System.out.println("--------------");
             System.out.println("No se encontro nada");
             return null;
         }

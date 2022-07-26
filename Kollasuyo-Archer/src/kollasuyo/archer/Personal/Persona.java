@@ -15,10 +15,18 @@ public class Persona implements Serializable{
     
     private String Nombre;
     private String Ci;
-
+    private String numero;
     public Persona(String Nombre, String Ci) {
         this.Nombre = Nombre;
         this.Ci = Ci;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
     public String getNombre() {

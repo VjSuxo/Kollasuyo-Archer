@@ -3,78 +3,89 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package kollasuyo.archer.Emeplado;
+package kollasuyo.archer.Interfaz;
 
-import EstructuraDatos.ListaDispositivos;
-import EstructuraDatos.NodoDispositivo;
+import EstructuraDatos.ListaMarcas;
+import EstructuraDatos.NodoMarca;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import kollasuyo.archer.Inventario.dispositivo;
-import kollasuyo.archer.Inventario.inventario;
+import kollasuyo.archer.Emeplado.InicioEmpleado;
+import kollasuyo.archer.Jefe.InicioJefe;
+import kollasuyo.archer.Persistencia;
+import kollasuyo.archer.Personal.Empleado;
+import kollasuyo.archer.Personal.Jefe;
 
 /**
  *
  * @author victo
  */
-public class Inventario extends javax.swing.JFrame {
-FondoPanel fondo = new FondoPanel();
+public class InterMarketing extends javax.swing.JFrame {
+
     /**
-     * Creates new form Inventario
+     * Creates new form InterMarketing
      */
-    dispositivo disp;
-    inventario inv = new inventario();
-    ListaDispositivos ls = new ListaDispositivos();
-    DefaultTableModel modelo;
-    String[] info = new String[6];
     
-    public void CargarTabla(){        
-        inv.Recuperar();
-        
-            ls = inv.getLs();
-            
-            NodoDispositivo nodo = new NodoDispositivo();
-            nodo = ls.getP();
-            while(nodo!=null){
-                disp = nodo.getDispo();
-                info[0] = disp.getId();
-                info[1] = String.valueOf(disp.getCantidad());
-                info[2] = disp.getNombre();
-                info[3] = disp.getGama();
-                info[4] = disp.getMarca();
-                info[5] = String.valueOf(disp.getPrecioBase());
-                
-                System.out.println(info[0]+" 1  "+info[1]+" 2  "+info[2]+" 3  "+info[3]+" 4  "+info[4]+" 5");
-                modelo.addRow(info);
-                nodo = nodo.getSig();
-            }
-            
-            
-            
-            
-       
+    private String Tipo;
+    private Jefe j;
+    private Empleado emp;
+    
+    public void setJefe(Jefe j){
+        Tipo = "jefe";
+        this.j = j;
     }
     
+    public void setEmpleado(Empleado em){
+        Tipo = "empleado";
+        emp = em;
+        
+    }
     
-    public Inventario() {
+     DefaultTableModel modelo;
+    String trabajo="";
+    String[] info = new String[6];
+    ListaMarcas ls = new ListaMarcas();
+    Persistencia per = new Persistencia();
+    
+    
+    private void CargarTabla(){
+         try {
+             ls = (ListaMarcas)per.recuperar("marcas");
+             
+             if(ls!=null){
+                 NodoMarca p = ls.getP();
+                 while(p!=null){
+                     info[0]=p.getMarca();
+                     info[1]=String.valueOf(p.getCantidadVentas());
+                     modelo.addRow(info);
+                     p=p.getSig();
+                 }
+             }
+             
+         } catch (IOException ex) {
+             Logger.getLogger(InterMarketing.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (ClassNotFoundException ex) {
+             Logger.getLogger(InterMarketing.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+    }
+    
+    FondoPanel fondo = new FondoPanel();
+    public InterMarketing() {
         this.setContentPane(fondo);
         initComponents();
         setLocationRelativeTo(null);
         modelo = new DefaultTableModel();
-        modelo.addColumn("Id");
-        modelo.addColumn("Cantidad");
-        modelo.addColumn("Modelo");
-        modelo.addColumn("Gama");
         modelo.addColumn("Marca");
-        modelo.addColumn("Precio");
+        modelo.addColumn("Cantidad Ventas");
         this.tabla.setModel(modelo);
         CargarTabla();
-        
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,25 +96,21 @@ FondoPanel fondo = new FondoPanel();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel1.setText("INVENTARIO");
-
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Cantidad", "Modelo", "Marca", "Gama", "Precio Base"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
         jScrollPane1.setViewportView(tabla);
@@ -120,28 +127,23 @@ FondoPanel fondo = new FondoPanel();
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(279, 279, 279)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(180, 180, 180)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         pack();
@@ -149,9 +151,18 @@ FondoPanel fondo = new FondoPanel();
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        InicioEmpleado emp = new InicioEmpleado();
-        emp.setVisible(true);
-        this.setVisible(false);
+        if(Tipo.equals("jefe")){
+            InicioJefe ini = new InicioJefe();
+            ini.Jefe(j);
+            ini.setVisible(true);
+            this.setVisible(false);
+        }
+        if(Tipo.equals("empleado")){
+            InicioEmpleado ini = new InicioEmpleado();
+            ini.Empleado(emp);
+            ini.setVisible(true);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -171,27 +182,26 @@ FondoPanel fondo = new FondoPanel();
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Inventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterMarketing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Inventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterMarketing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Inventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterMarketing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Inventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterMarketing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inventario().setVisible(true);
+                new InterMarketing().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables

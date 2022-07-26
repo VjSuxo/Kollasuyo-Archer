@@ -86,21 +86,45 @@ public class ListaEmpleado implements Serializable{
                 }
 		return b;
 	}
+        public NodoEmpleado eliminar(String ci) {
+		NodoEmpleado aux = getP();
+                while(aux!=null){
+                    if(aux.getSig()!=null){
+                        Empleado dp = aux.getSig().getEmpleado();
+                        if(dp.getCi().equals(ci)){
+                         aux.setSig(aux.getSig().getSig());
+                        
+                        }
+                    }
+                    else{
+                        aux.setSig(null);
+                    }
+                    
+                    aux = aux.getSig();
+                }
+                return aux;
+	}
         
-        public Empleado Buscar(int i){
+        public void Modificar(String ci,Empleado empleado){
             NodoEmpleado aux = getP();
             int pos = 0;
 		while(aux != null) {
-                        if(pos==i){
-                            return aux.getEmpleado();
+                    Empleado emp = aux.getEmpleado();
+                    System.out.println(emp.getCi());
+                        if(emp.getCi().equals(ci)){
+                            System.out.println("modificando empleado");
+                            aux.setEmpleado(empleado);
+                            break;
                         }
                         else{
-                            aux = aux.getSig();
-                            i++;
+                            System.out.println("no se encontro empleado para la modificacion");
                         }
+                    aux = aux.getSig();
 		}
-            return null;    
+                
         }
+        
+        
 	
         
 }

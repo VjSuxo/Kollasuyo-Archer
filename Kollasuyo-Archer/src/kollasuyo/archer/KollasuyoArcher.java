@@ -8,6 +8,7 @@ package kollasuyo.archer;
 import EstructuraDatos.ListaDispositivos;
 import EstructuraDatos.ListaEmpleado;
 import java.io.Serializable;
+import kollasuyo.archer.Interfaz.Inicio;
 import kollasuyo.archer.Inventario.dispositivo;
 import kollasuyo.archer.Inventario.inventario;
 import kollasuyo.archer.Personal.Jefe;
@@ -24,11 +25,9 @@ public class KollasuyoArcher implements Serializable{
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        GenradorCodigoRegistro g = new GenradorCodigoRegistro("jefe");
-        String c = g.generarCodigo();
-        System.out.println(c);
-        Persistencia p = new Persistencia();
-        p.guardar((ListaEmpleado)null, "empleado");
+        Inicio i = new Inicio();
+        i.setVisible(true);
+        
         
     }
     

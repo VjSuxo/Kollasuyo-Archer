@@ -12,13 +12,15 @@ import java.io.Serializable;
  * @author victo
  */
 public class dispositivo implements Serializable{
+    private String id;
     private String marca;
     private String gama;
     private String nombre;
     private int cantidad;
     private double precioBase;
 
-    public dispositivo(String marca, String gama, int cantidad, double precioBase,String nombre) {
+    public dispositivo(String id,String marca, String gama, int cantidad, double precioBase,String nombre) {
+        this.id = id;
         this.marca = marca;
         this.gama = gama;
         this.cantidad = cantidad;
@@ -67,6 +69,15 @@ public class dispositivo implements Serializable{
     public void setPrecioBase(double precioBase) {
         this.precioBase = precioBase;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
     
     public void mostrar(){}
     

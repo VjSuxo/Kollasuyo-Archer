@@ -21,6 +21,9 @@ public class GenradorCodigoRegistro implements Serializable{
     public GenradorCodigoRegistro(String tipo) {
         this.tipo = tipo;
     }
+    public GenradorCodigoRegistro() {
+       
+    }
 
     public String getCodigo() {
         return codigo;
@@ -40,7 +43,7 @@ public class GenradorCodigoRegistro implements Serializable{
 
     public String generarCodigo(){
         String c="";
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
             int n = (int)(Math.random()*((9-1)+1))+1;             
             c+=n;
         }
