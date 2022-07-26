@@ -9,6 +9,7 @@ import EstructuraDatos.ListaEmpleado;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import kollasuyo.archer.Persistencia;
 import kollasuyo.archer.Personal.Bonos;
 import kollasuyo.archer.Personal.Empleado;
@@ -226,6 +227,9 @@ public class Registro extends javax.swing.JFrame {
         l.setVisible(true);
         this.setVisible(false);
             
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"El usuario y la contraseña deben ser diferentes la contraseña debe ser mas de 5 caracteres");
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed

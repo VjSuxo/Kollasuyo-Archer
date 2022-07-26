@@ -3,12 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/I:/Invierno-2022/INF-162/Proyecto/Kollasuyo-Archer/src/kollasuyo/archer/Persistencia.java</file>
-            <file>file:/I:/Invierno-2022/INF-162/Proyecto/Kollasuyo-Archer/src/kollasuyo/archer/Jefe/Inventario.java</file>
+            <file>file:/I:/Invierno-2022/INF-162/Proyecto/Kollasuyo-Archer/src/Finanzas/Finanzas.java</file>
+            <file>file:/I:/Invierno-2022/INF-162/Proyecto/Kollasuyo-Archer/src/kollasuyo/archer/KollasuyoArcher.java</file>
+            <file>file:/I:/Invierno-2022/INF-162/Proyecto/Kollasuyo-Archer/src/kollasuyo/archer/Emeplado/InicioEmpleado.java</file>
+            <file>file:/I:/Invierno-2022/INF-162/Proyecto/Kollasuyo-Archer/src/kollasuyo/archer/Interfaz/Inicio.java</file>
+            <file>file:/I:/Invierno-2022/INF-162/Proyecto/Kollasuyo-Archer/src/kollasuyo/archer/Jefe/InterFinanzas.java</file>
             <file>file:/I:/Invierno-2022/INF-162/Proyecto/Kollasuyo-Archer/src/kollasuyo/archer/Jefe/ControlPersonal.java</file>
             <file>file:/I:/Invierno-2022/INF-162/Proyecto/Kollasuyo-Archer/src/kollasuyo/archer/Jefe/InicioJefe.java</file>
             <file>file:/I:/Invierno-2022/INF-162/Proyecto/Kollasuyo-Archer/src/kollasuyo/archer/Interfaz/Login.java</file>
-            <file>file:/I:/Invierno-2022/INF-162/Proyecto/Kollasuyo-Archer/src/EstructuraDatos/ListaEmpleado.java</file>
+            <file>file:/I:/Invierno-2022/INF-162/Proyecto/Kollasuyo-Archer/src/kollasuyo/archer/Jefe/InterInventario.java</file>
+            <file>file:/I:/Invierno-2022/INF-162/Proyecto/Kollasuyo-Archer/src/kollasuyo/archer/Interfaz/Registro.java</file>
         </group>
     </open-files>
 </project-private>
